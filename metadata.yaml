@@ -1,0 +1,31 @@
+name: gotenberg
+display-name: Gotenberg
+summary: Converter for numerous document formats.
+description: |
+  Gotenberg provides a developer-friendly API to interact with powerful tools
+  like Chromium and LibreOffice for converting numerous document formats
+  (HTML, Markdown, Word, Excel, etc.) into PDF files, and more!
+
+website: https://gotenberg.dev/
+docs: https://gotenberg.dev/docs/getting-started/introduction
+
+source:
+  - https://github.com/johnlettman/charm-gotenberg
+  - https://github.com/gotenberg/gotenberg
+
+issues:
+  - https://github.com/johnlettman/charm-gotenberg/issues
+  - https://github.com/gotenberg/gotenberg/issues
+
+maintainers:
+  - John P. Lettman <the@johnlettman.com>
+
+series:
+  - bionic
+  - focal
+  - jammy
+
+provides:
+  api:
+    interface: http
+    optional: true

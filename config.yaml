@@ -1,0 +1,113 @@
+options:
+  api-timeout:
+    type: string
+    default: "30s"
+    description: |
+      Set the time limit for requests.
+
+  api-root-path:
+    type: string
+    default: "/"
+    description: |
+      Set the root path of the API - for service discovery via URL paths.
+
+  api-trace-header:
+    type: string
+    default: Gotenberg-Trace
+    description: |
+      Set the header name to use for identifying requests.
+
+  chromium-allow-file-access-from-files:
+    type: boolean
+    default: false
+    description: |
+      Allow file:// URIs to read other file:// URIs.
+
+  chromium-allow-insecure-localhost:
+    type: boolean
+    default: false
+    description: |
+      Ignore TLS/SSL errors on localhost.
+
+  chromium-allow-list:
+    type: string
+    default: ""
+    description: |
+      Set the allowed URLs for Chromium using a regular expression.
+      (default: All)
+
+  chromium-deny-list:
+    type: string
+    default: "^file:///[^tmp].*"
+    description: |
+      Set the denied URLs for Chromium using a regular expression.
+
+  chromium-ignore-certificate-errors:
+    type: boolean
+    default: false
+    description: |
+      Ignore the certificate errors.
+
+  chromium-disable-web-security:
+    type: boolean
+    default: false
+    description: |
+      Don't enforce the same-origin policy.
+
+  chromium-incognito:
+    type: boolean
+    default: false
+    description: |
+      Start Chromium with incognito mode.
+
+  chromium-failed-starts-threshold:
+    type: int
+    default: 5
+    description: |
+      Set the number of consecutive failed starts after which the module is
+      considered unhealthy.
+
+  chromium-host-resolver-rules:
+    type: string
+    default: ""
+    description: |
+      Set custom mappings to the host resolver.
+
+  chromium-proxy-server:
+    type: string
+    default: ""
+    description: |
+      Set the outbound proxy server; this switch only affects
+      HTTP and HTTPS requests.
+
+  chromium-disable-javascript:
+    type: boolean
+    default: false
+    description: |
+      Disable JavaScript.
+
+  chromium-disable-routes:
+    type: boolean
+    default: false
+    description: |
+      Disable the routes.
+
+  libreoffice-disable-routes:
+    type: boolean
+    default: false
+    description: |
+      Disable the route.
+
+  uno-listener-start-timeout:
+    type: int
+    default: 10
+    description: |
+      Time limit for starting the LibreOffice listener.
+      (seconds)
+
+  uno-listener-restart-threshold:
+    type: int
+    default: 10
+    description: |
+      Conversions limit after which the LibreOffice listener is restarted.
+      (seconds)

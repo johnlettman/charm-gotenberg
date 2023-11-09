@@ -1,0 +1,18 @@
+[Unit]
+Description=Gotenberg
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=gotenberg
+Group=gotenberg
+ExecStart={{ binary }} {{ arguments }}
+Environment=CHROMIUM_BIN_PATH=/usr/bin/chromium \
+    LIBREOFFICE_BIN_PATH=/usr/lib/libreoffice/program/soffice.bin \
+    UNOCONV_BIN_PATH=/usr/bin/unoconv \
+    PDFTK_BIN_PATH=/usr/bin/pdftk \
+    QPDF_BIN_PATH=/usr/bin/qpdf
+
+[Install]
+WantedBy=multi-user.target

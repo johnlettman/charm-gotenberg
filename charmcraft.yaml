@@ -1,0 +1,86 @@
+# Charmcraft configuration
+# Documentation: https://juju.is/docs/sdk/charmcraft-config
+
+type: charm
+
+parts:
+  gotenberg:
+    plugin: go
+    source: https://github.com/gotenberg/gotenberg.git
+    source-type: git
+    source-tag: v7.9.2
+    source-submodules: []
+    build-snaps:
+      - go/1.21/stable
+    prime: [gotenberg]
+    override-build: |
+      # Avoid system golang
+      export PATH="/snap/bin:${PATH}"
+      export GOARCH="${CRAFT_TARGET_ARCH}"
+
+      go mod download
+      go mod verify
+      go build -o gotenberg \
+        -ldflags "-X 'github.com/gotenberg/gotenberg/v7/cmd.Version=7.9.2'" \
+        cmd/gotenberg/main.go
+
+  charm:
+    after: [gotenberg]
+    prime: [gotenberg]
+
+bases:
+  - build-on:
+      - name: ubuntu
+        channel: "22.04"
+    run-on:
+      - name: ubuntu
+        channel: "22.04"
+        architectures: [amd64]
+      - name: ubuntu
+        channel: "20.04"
+        architectures: [amd64]
+      - name: ubuntu
+        channel: "18.04"
+        architectures: [amd64]
+
+  # - build-on:
+  #     - name: ubuntu
+  #       channel: "22.04"
+  #   run-on:
+  #     - name: ubuntu
+  #       channel: "22.04"
+  #       architectures: [s390x]
+  #     - name: ubuntu
+  #       channel: "20.04"
+  #       architectures: [s390x]
+  #     - name: ubuntu
+  #       channel: "18.04"
+  #       architectures: [s390x]
+
+  # - build-on:
+  #     - name: ubuntu
+  #       channel: "22.04"
+  #   run-on:
+  #     - name: ubuntu
+  #       channel: "22.04"
+  #       architectures: [ppc64el]
+  #     - name: ubuntu
+  #       channel: "20.04"
+  #       architectures: [ppc64el]
+  #     - name: ubuntu
+  #       channel: "18.04"
+  #       architectures: [ppc64el]
+
+  # - build-on:
+  #     - name: ubuntu
+  #       channel: "22.04"
+  #   run-on:
+  #     - name: ubuntu
+  #       channel: "22.04"
+  #       architectures: [arm64]
+  #     - name: ubuntu
+  #       channel: "20.04"
+  #       architectures: [arm64]
+  #     - name: ubuntu
+  #       channel: "18.04"
+  #       architectures: [arm64]

@@ -1,0 +1,12 @@
+{
+    "python.analysis.extraPaths": [
+        "lib",
+        "src"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "files.associations": {
+        "copyright": "plaintext"
+    }
+}
